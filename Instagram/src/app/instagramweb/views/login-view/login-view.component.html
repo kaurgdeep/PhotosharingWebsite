@@ -1,0 +1,10 @@
+<p>login-view works!</p>
+<div class="container">
+    <h2>Login</h2>
+    <app-credential [busy]="apiCall"
+                    [status]="status"
+                    [errorStatus]="errorStatus"
+                    (loginClick)="login($event)"></app-credential>
+    <p></p>
+    <a [routerLink]="['/register']">Don't have an account? Register</a>
+</div>
