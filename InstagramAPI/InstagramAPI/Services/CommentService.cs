@@ -27,9 +27,10 @@ namespace InstagramAPI.Services
         public Comment Get(Func<Comment, bool> filter)
         {
             return Context.Comments
-                    .Include(_ => _.Post)
-                    .OrderByDescending(_ => _.CreatedAt)
                     .Include(_ => _.User)
+                    .OrderByDescending(_ => _.CreatedAt)
+                    .Include(_ => _.Post)
+                        .ThenInclude(_ => _.User)
                     .Where(filter).FirstOrDefault();
         }
 
@@ -41,10 +42,11 @@ namespace InstagramAPI.Services
         public IEnumerable<Comment> GetMany(Func<Comment, bool> filter)
         {
             return Context.Comments
-                .Include(_ => _.Post)
-                .OrderByDescending(_ => _.CreatedAt)
-                .Include(_ => _.User)
-                .Where(filter);
+                    .Include(_ => _.User)
+                    .OrderByDescending(_ => _.CreatedAt)
+                    .Include(_ => _.Post)
+                        .ThenInclude(_ => _.User)
+                    .Where(filter);
         }
 
         public Comment Update(Action updateFn, Comment comment)

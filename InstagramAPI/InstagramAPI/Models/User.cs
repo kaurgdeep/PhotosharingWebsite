@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace InstagramAPI.Models
 {
-    public class User : IdentityUser
+    public class User 
     {
 
         public int UserId { get; set; }
@@ -19,9 +19,18 @@ namespace InstagramAPI.Models
         public string EmailAddress { get; set; }
 
         public string Password { get; set; }
-        public string PasswordSalt { get; set; }
+        public string PasswordHash { get; set; }
 
 
         public DateTime Created { get; set; }
+
+        public List<Post> Posts { get; set; }
+        public List<Comment> Comments { get; set; }
+
+        public User()
+        {
+            Posts = new List<Post>();
+            Comments = new List<Comment>();
+        }
     } 
 }

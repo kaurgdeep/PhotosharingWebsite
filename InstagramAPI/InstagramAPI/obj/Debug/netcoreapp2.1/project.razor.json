@@ -1,0 +1,16 @@
+{
+  "FilePath": "c:\\Users\\gagandeep\\Desktop\\projects\\InstagramProject\\InstagramAPI\\InstagramAPI\\InstagramAPI.csproj",
+  "Configuration": {
+    "ConfigurationName": "MVC-2.1",
+    "LanguageVersion": "2.1",
+    "Extensions": [
+      {
+        "ExtensionName": "MVC-2.1"
+      }
+    ]
+  },
+  "ProjectWorkspaceState": null,
+  "RootNamespace": "InstagramAPI",
+  "Documents": [],
+  "SerializationFormat": "0.2"
+}

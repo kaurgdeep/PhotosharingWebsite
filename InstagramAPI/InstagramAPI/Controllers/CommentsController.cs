@@ -6,24 +6,22 @@ using InstagramAPI.Dtos;
 using InstagramAPI.Interfaces.Services;
 using InstagramAPI.Models;
 using InstagramAPI.Responses;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InstagramAPI.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
+    [ApiController]
     [EnableCors(Constants.InstagramServerCorsPolicy)]
-    // [ApiController]
-    public class PostsController : InstagramBaseController
+    public class CommentsController : InstagramBaseController
     {
         private IEntityService<User> UserService;
         private IEntityService<Post> PostService;
         private IEntityService<Comment> CommentService;
 
-        public PostsController(IEntityService<User> userService, IEntityService<Post> postService, IEntityService<Comment> commentService)
+        public CommentsController(IEntityService<User> userService, IEntityService<Post> postService, IEntityService<Comment> commentService)
         {
             UserService = userService;
             PostService = postService;
@@ -32,26 +30,27 @@ namespace InstagramAPI.Controllers
         }
         [HttpPost]
         [Route("")]
-        public ActionResult CreatePost([FromBody] PostDto postDto)
+        public ActionResult CreateComment([FromBody] CommentDto commentDto)
         {
             if (LoggedInUserId == null)
             {
                 return BadRequest("Invalid user id");
             }
 
-            var post = new Post
+            var comment = new Comment
             {
                 UserId = LoggedInUserId.Value,
-                PostId = postDto.PostId,
-                PostText = postDto.PostText,
+                CommentId = commentDto.CommentId,
+                CommentText = commentDto.CommentText,
                 CreatedAt = DateTime.UtcNow,
 
 
             };
-            var postId = PostService.Create(post);
+            var commentId = CommentService.Create(comment);
 
-            return Ok(new CreateResponse { Id = postId });
+            return Ok(new CreateResponse { Id = commentId });
 
         }
+
     }
 }

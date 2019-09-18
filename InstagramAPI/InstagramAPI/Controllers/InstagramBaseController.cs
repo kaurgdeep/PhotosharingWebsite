@@ -23,7 +23,7 @@ namespace InstagramAPI.Controllers
                 }
 
                 // userId == null
-                var sid = (Constants.UserId);
+                var sid = GetClaim(Constants.UserId);
                 if (sid == null)
                 {
                     return null;
@@ -47,7 +47,7 @@ namespace InstagramAPI.Controllers
                     return emailAddress;
                 }
 
-                var emailAddressFromClaims = (Constants.EmailAddress);
+                var emailAddressFromClaims = GetClaim(Constants.EmailAddress);
                 if (emailAddressFromClaims == null)
                 {
                     return null;
@@ -56,6 +56,11 @@ namespace InstagramAPI.Controllers
 
                 return emailAddress;
             }
+        }
+
+        private string GetClaim(string claimType)
+        {
+            return User?.Claims?.Where(c => c.Type == claimType)?.FirstOrDefault()?.Value;
         }
     }
 }

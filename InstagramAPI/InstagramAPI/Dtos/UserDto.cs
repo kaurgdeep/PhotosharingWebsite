@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InstagramAPI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,5 +14,7 @@ namespace InstagramAPI.Dtos
         public string EmailAddress { get; set; }
         public string Password { get; set; }
         public DateTime Created { get; set; }
+        public List<Post> Posts { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }

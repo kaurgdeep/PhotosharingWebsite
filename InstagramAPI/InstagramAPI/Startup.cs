@@ -55,6 +55,8 @@ namespace InstagramAPI
             });
             // var connection = @"Server=(localdb)\mssqllocaldb;Database=InstagramDB;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddScoped<IEntityService<User>, UserService>();
+            services.AddScoped<IEntityService<Post>, PostService>();
+            services.AddScoped<IEntityService<Comment>, CommentService>();
 
             services.AddDbContext<InstagramContext>
                 (options => options.UseSqlServer(Configuration[Constants.DbConnection]));
