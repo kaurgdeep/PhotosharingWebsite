@@ -1,0 +1,6 @@
+<div *ngFor="let post of posts" class="container post-container">
+    <app-post-comment [postData]="post"></app-post-comment>
+    <app-comment-list [postId]="post.postId"></app-comment-list>
+</div>
+
+<button class="btn btn-info" (click)="getMore()">More</button>

@@ -1,0 +1,24 @@
+
+<form #form="ngForm">
+    <div class="form-group">
+        <label for="post">Post your status:</label>
+        <input required
+               type="text"
+               class="form-control"
+               maxlength="1024"
+               name="post"
+               #post="ngModel"
+               placeholder="What's on your mind"
+               [disabled]="busy"
+               [(ngModel)]="vm.postText">
+    </div>
+    
+    <button type="submit"
+            class="btn btn-primary"
+            [disabled]="form.invalid || busy"
+            (click)="postClick()">
+            
+        <ng-container *ngIf="busy"><i class="fa fa-spinner fa-spin"></i>&nbsp;Registering...</ng-container>
+        <ng-container *ngIf="!busy">Register</ng-container>
+    </button>
+</form>

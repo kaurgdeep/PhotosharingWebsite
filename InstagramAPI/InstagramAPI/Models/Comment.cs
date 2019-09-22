@@ -17,16 +17,21 @@ namespace InstagramAPI.Models
 
         public DateTime UpdatedAt { get; set; }
 
-        
+        [Required]
         public int PostId { get; set; }
         public Post Post { get; set; }
 
-       
+        [Required]
         public int UserId { get; set; }
         public User User { get; set; }
 
-        public List<Like> Likes { get; set; }
-       
+        public List<CommentLike> CommentLikes { get; set; }
+
+        public Comment()
+        {
+            CommentLikes = new List<CommentLike>();
+        }
+
 
 
 

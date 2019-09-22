@@ -36,16 +36,20 @@ namespace InstagramAPI.Services
 
         public int Count(Func<Comment, bool> filter)
         {
-            throw new NotImplementedException();
+            return Context.Comments.Count(filter);
+
         }
 
-        public IEnumerable<Comment> GetMany(Func<Comment, bool> filter)
+        public IEnumerable<Comment> GetMany(Func<Comment, bool> filter, int skip = 0, int take = 25)
         {
+            take = take <= 0 ? 25 : take;
             return Context.Comments
-                    .Include(_ => _.User)
+                   // .Include(_ => _.User)
                     .OrderByDescending(_ => _.CreatedAt)
-                    .Include(_ => _.Post)
-                        .ThenInclude(_ => _.User)
+                    // .Include(_ => _.Post)
+                    // .ThenInclude(_ => _.User)
+                    .Skip(skip)
+                    .Take(take)
                     .Where(filter);
         }
 
@@ -55,6 +59,13 @@ namespace InstagramAPI.Services
             Context.SaveChanges();
 
             return comment;
+        }
+
+        public void Delete(Func<Comment, bool> filter)
+        {
+           
+            throw new NotImplementedException();
+           
         }
 
         public void Delete(int id)

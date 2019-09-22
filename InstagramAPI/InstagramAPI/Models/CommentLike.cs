@@ -6,25 +6,14 @@ using System.Threading.Tasks;
 
 namespace InstagramAPI.Models
 {
-    public class Like
+    public class CommentLike
     {
-        public int LikeId { get; set; }
-
-        public DateTime CreatedAt { get; set; }
-
-        public DateTime UpdatedAt { get; set; }
-
-        [Required]
-        public int PostId { get; set; }
-        public Post Post { get; set; }
+        public int CommentLikeId { get; set; }
 
         [Required]
         public int CommentId { get; set; }
-        public Comment Comment { get; set; }
-
         [Required]
         public int UserId { get; set; }
         public User User { get; set; }
-
     }
 }

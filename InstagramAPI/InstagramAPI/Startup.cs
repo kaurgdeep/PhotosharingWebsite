@@ -57,6 +57,9 @@ namespace InstagramAPI
             services.AddScoped<IEntityService<User>, UserService>();
             services.AddScoped<IEntityService<Post>, PostService>();
             services.AddScoped<IEntityService<Comment>, CommentService>();
+            services.AddScoped<IEntityService<CommentLike>, CommentLikeService>();
+            services.AddScoped<IEntityService<PostLike>, PostLikeService>();
+
 
             services.AddDbContext<InstagramContext>
                 (options => options.UseSqlServer(Configuration[Constants.DbConnection]));

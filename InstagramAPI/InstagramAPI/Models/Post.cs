@@ -24,12 +24,12 @@ namespace InstagramAPI.Models
 
        
         public List<Comment> Comments { get; set; }
-        public List<Like> Likes { get; set; }
+        public List<PostLike> PostLikes { get; set; }
 
         public Post()
         {
             Comments = new List<Comment>();
-            Likes = new List<Like>();
+            PostLikes = new List<PostLike>();
         }
     }
 }

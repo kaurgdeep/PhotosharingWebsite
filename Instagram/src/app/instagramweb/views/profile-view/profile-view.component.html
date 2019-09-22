@@ -1,1 +1,8 @@
-<h1>Welcome</h1>
+<div class="container">
+    <h2>Profile</h2>
+    <app-credential [busy]="apiCall" (PostClick)="post($event)">
+    </app-credential>
+    <p></p>
+    <button type="button" class="btn" (click)="submitLogin();">Submit</button>
+</div>
+

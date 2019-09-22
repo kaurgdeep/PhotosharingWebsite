@@ -16,7 +16,9 @@ namespace InstagramAPI.Models
         public DbSet<User> Users { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment>Comments { get; set; }
-        public DbSet<Like> Likes { get; set; }
+        public DbSet<PostLike> PostLikes { get; set; }
+        public DbSet<CommentLike> CommentLikes { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -37,6 +39,10 @@ namespace InstagramAPI.Models
             // Use Fluent API
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.EmailAddress)
+                .IsUnique();
+
+            modelBuilder.Entity<PostLike>()
+                .HasIndex(u => new { u.PostId, u.UserId })
                 .IsUnique();
 
         }

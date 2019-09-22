@@ -33,7 +33,7 @@ namespace InstagramAPI.Services
             throw new NotImplementedException();
         }
 
-        public IEnumerable<User> GetMany(Func<User, bool> filter)
+        public IEnumerable<User> GetMany(Func<User, bool> filter, int skip = 0, int take = 25)
         {
             throw new NotImplementedException();
         }
@@ -46,6 +46,13 @@ namespace InstagramAPI.Services
         public void Delete(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public void Delete(Func<User, bool> filter)
+        {
+            throw new NotImplementedException();
+
+
         }
     }
 }

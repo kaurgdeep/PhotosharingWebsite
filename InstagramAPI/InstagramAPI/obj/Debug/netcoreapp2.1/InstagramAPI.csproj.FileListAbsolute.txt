@@ -2,7 +2,6 @@ C:\Users\gagandeep\Desktop\projects\InstagramProject\InstagramAPI\InstagramAPI\b
 C:\Users\gagandeep\Desktop\projects\InstagramProject\InstagramAPI\InstagramAPI\bin\Debug\netcoreapp2.1\InstagramAPI.runtimeconfig.json
 C:\Users\gagandeep\Desktop\projects\InstagramProject\InstagramAPI\InstagramAPI\bin\Debug\netcoreapp2.1\InstagramAPI.runtimeconfig.dev.json
 C:\Users\gagandeep\Desktop\projects\InstagramProject\InstagramAPI\InstagramAPI\bin\Debug\netcoreapp2.1\InstagramAPI.dll
-C:\Users\gagandeep\Desktop\projects\InstagramProject\InstagramAPI\InstagramAPI\obj\Debug\netcoreapp2.1\InstagramAPI.csprojAssemblyReference.cache
 C:\Users\gagandeep\Desktop\projects\InstagramProject\InstagramAPI\InstagramAPI\obj\Debug\netcoreapp2.1\InstagramAPI.csproj.CoreCompileInputs.cache
 C:\Users\gagandeep\Desktop\projects\InstagramProject\InstagramAPI\InstagramAPI\obj\Debug\netcoreapp2.1\InstagramAPI.RazorAssemblyInfo.cache
 C:\Users\gagandeep\Desktop\projects\InstagramProject\InstagramAPI\InstagramAPI\obj\Debug\netcoreapp2.1\InstagramAPI.RazorAssemblyInfo.cs
@@ -12,3 +11,4 @@ C:\Users\gagandeep\Desktop\projects\InstagramProject\InstagramAPI\InstagramAPI\o
 C:\Users\gagandeep\Desktop\projects\InstagramProject\InstagramAPI\InstagramAPI\bin\Debug\netcoreapp2.1\InstagramAPI.pdb
 C:\Users\gagandeep\Desktop\projects\InstagramProject\InstagramAPI\InstagramAPI\obj\Debug\netcoreapp2.1\InstagramAPI.dll
 C:\Users\gagandeep\Desktop\projects\InstagramProject\InstagramAPI\InstagramAPI\obj\Debug\netcoreapp2.1\InstagramAPI.pdb
+C:\Users\gagandeep\Desktop\projects\InstagramProject\InstagramAPI\InstagramAPI\obj\Debug\netcoreapp2.1\InstagramAPI.csprojAssemblyReference.cache

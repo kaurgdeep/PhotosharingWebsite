@@ -16,6 +16,6 @@ namespace InstagramAPI.Dtos
         public Post Post { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
-        public List<Like> Likes { get; set; }
+        public List<CommentLike> CommentLikes { get; set; }
     }
 }

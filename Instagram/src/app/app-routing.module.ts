@@ -5,6 +5,8 @@ import { RegisterViewComponent } from './instagramweb/views/register-view/regist
 import { AuthenticationGuardService } from './instagramweb/services/AuthenticationGuardService';
 import { HomeViewComponent } from './instagramweb/views/home-view/home-view.component';
 import { ProfileViewComponent } from './instagramweb/views/profile-view/profile-view.component';
+import { TimelineViewComponent } from './instagramweb/views/timeline-view/timeline-view.component';
+
 
 
 
@@ -17,6 +19,8 @@ const routes: Routes = [
   { path: 'login', component: LoginViewComponent },
   { path: 'register', component: RegisterViewComponent },
   { path: 'profile', component: ProfileViewComponent, canActivate: [AuthenticationGuardService] },
+  { path: 'timeline', component: TimelineViewComponent, canActivate: [AuthenticationGuardService] },
+
 ];
 
 @NgModule({

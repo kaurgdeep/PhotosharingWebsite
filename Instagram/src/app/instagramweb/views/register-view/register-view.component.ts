@@ -19,46 +19,6 @@ export class RegisterViewComponent implements OnInit {
 
   ngOnInit() {
 
-    (window as any).fbAsyncInit = function() {
-      this.FB.init({
-        appId      : '498293024296483',
-        cookie     : true,
-        xfbml      : true,
-        version    : 'v3.1'
-      });
-        
-      this.FB.AppEvents.logPageView();   
-        
-    };
-  
-    (function(d, s, id){
-       var js, fjs = d.getElementsByTagName(s)[0];
-       if (d.getElementById(id)) {return;}
-       js = d.createElement(s); js.id = id;
-       js.src = "https://connect.facebook.net/en_US/sdk.js";
-       fjs.parentNode.insertBefore(js, fjs);
-     }(document, 'script', 'facebook-jssdk'));
-  }
-
-  submitLogin(){
-    console.log("submit login to facebook");
-    // FB.login();
-    this.FB.login((response: { authResponse: any; })=>
-        {
-          console.log('submitLogin',response);
-          if (response.authResponse)
-          {
-            //login success
-            //login success code here
-            //redirect to home page
-            this.router.navigate(['/profile']);
-           }
-           else
-           {
-           console.log('User login failed');
-         }
-      });
-
   }
 
   async register(user: IRegisterUser) {

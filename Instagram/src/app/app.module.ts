@@ -15,6 +15,13 @@ import { AuthenticationHttpInterceptor } from './instagramweb/services/Authentic
 import { AuthenticationGuardService } from './instagramweb/services/AuthenticationGuardService';
 import { HomeViewComponent } from './instagramweb/views/home-view/home-view.component';
 import { ProfileViewComponent } from './instagramweb/views/profile-view/profile-view.component';
+import { TimelineViewComponent } from './instagramweb/views/timeline-view/timeline-view.component';
+import { PostComponent } from './instagramweb/components/post/post.component';
+import { PostsListComponent } from './instagramweb/components/posts-list/posts-list.component';
+import { PostService } from './instagramweb/services/PostService';
+import { PostCommentComponent } from './instagramweb/components/post-comment/post-comment.component';
+import { CommentService } from './instagramweb/services/CommentService';
+import { CommentListComponent } from './instagramweb/components/comment-list/comment-list.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +31,11 @@ import { ProfileViewComponent } from './instagramweb/views/profile-view/profile-
     RegisterViewComponent,
     HomeViewComponent,
     ProfileViewComponent,
+    TimelineViewComponent,
+    PostComponent,
+    PostsListComponent,
+    PostCommentComponent,
+    CommentListComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +45,8 @@ import { ProfileViewComponent } from './instagramweb/views/profile-view/profile-
   ],
   providers: [
     UserService,
+    PostService,
+    CommentService,
     AuthenticationStore,
     AuthenticationGuardService,
     { provide: HTTP_INTERCEPTORS, useClass: BaseUrlHttpInterceptor, multi: true },

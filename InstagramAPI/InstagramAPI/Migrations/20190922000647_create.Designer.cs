@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InstagramAPI.Migrations
 {
     [DbContext(typeof(InstagramContext))]
-    [Migration("20190918073428_create")]
+    [Migration("20190922000647_create")]
     partial class create
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,31 +47,23 @@ namespace InstagramAPI.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("InstagramAPI.Models.Like", b =>
+            modelBuilder.Entity("InstagramAPI.Models.CommentLike", b =>
                 {
-                    b.Property<int>("LikeId")
+                    b.Property<int>("CommentLikeId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("CommentId");
 
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<int>("PostId");
-
-                    b.Property<DateTime>("UpdatedAt");
-
                     b.Property<int>("UserId");
 
-                    b.HasKey("LikeId");
+                    b.HasKey("CommentLikeId");
 
                     b.HasIndex("CommentId");
 
-                    b.HasIndex("PostId");
-
                     b.HasIndex("UserId");
 
-                    b.ToTable("Likes");
+                    b.ToTable("CommentLikes");
                 });
 
             modelBuilder.Entity("InstagramAPI.Models.Post", b =>
@@ -94,6 +86,26 @@ namespace InstagramAPI.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Posts");
+                });
+
+            modelBuilder.Entity("InstagramAPI.Models.PostLike", b =>
+                {
+                    b.Property<int>("PostLikeId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("PostId");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("PostLikeId");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("PostId", "UserId")
+                        .IsUnique();
+
+                    b.ToTable("PostLikes");
                 });
 
             modelBuilder.Entity("InstagramAPI.Models.User", b =>
@@ -136,16 +148,11 @@ namespace InstagramAPI.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 
-            modelBuilder.Entity("InstagramAPI.Models.Like", b =>
+            modelBuilder.Entity("InstagramAPI.Models.CommentLike", b =>
                 {
-                    b.HasOne("InstagramAPI.Models.Comment", "Comment")
-                        .WithMany("Likes")
+                    b.HasOne("InstagramAPI.Models.Comment")
+                        .WithMany("CommentLikes")
                         .HasForeignKey("CommentId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("InstagramAPI.Models.Post", "Post")
-                        .WithMany("Likes")
-                        .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("InstagramAPI.Models.User", "User")
@@ -158,6 +165,19 @@ namespace InstagramAPI.Migrations
                 {
                     b.HasOne("InstagramAPI.Models.User", "User")
                         .WithMany("Posts")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("InstagramAPI.Models.PostLike", b =>
+                {
+                    b.HasOne("InstagramAPI.Models.Post")
+                        .WithMany("PostLikes")
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("InstagramAPI.Models.User", "User")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
