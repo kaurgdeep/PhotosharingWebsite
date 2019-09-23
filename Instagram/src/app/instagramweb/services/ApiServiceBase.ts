@@ -66,4 +66,16 @@ export abstract class ApiServiceBase {
 
         return response;
     }
+
+    protected async httpDelete<TResponse>({
+        url = '' }: { url?: string } = {}): Promise<TResponse> {
+        const request = new Promise<TResponse>((resolve, reject) => {
+            this.httpClient.delete<TResponse>(`${this.baseUrl}/${url}`)
+                // .retry(retries)
+                .subscribe((data) => resolve(data), (reason) => reject(reason));
+        });
+
+        return await this.executePromise<TResponse>(request);
+    }
+
 }

@@ -33,6 +33,7 @@ namespace InstagramAPI.Migrations
                     PostId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     PostText = table.Column<string>(nullable: false),
+                    ImagePath = table.Column<string>(nullable: true),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     UpdatedAt = table.Column<DateTime>(nullable: false),
                     UserId = table.Column<int>(nullable: false)

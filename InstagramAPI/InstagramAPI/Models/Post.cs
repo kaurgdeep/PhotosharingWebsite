@@ -13,6 +13,7 @@ namespace InstagramAPI.Models
 
         [Required]
         public string PostText { get; set; }
+        public string ImagePath { get; set; }
 
         public DateTime CreatedAt { get; set; }
 

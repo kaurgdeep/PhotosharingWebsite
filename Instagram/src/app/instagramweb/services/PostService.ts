@@ -34,6 +34,13 @@ export class PostService extends ApiServiceBase {
         return await super.httpPost<number, ICreateResponse>({ url: `${postId}/like` });
     }
 
+    async deletePostLike(postId: number): Promise<{}> {
+        return await super.httpDelete<{}>({ url: `${postId}/like` });
+    }
+
+
+    
+
 
     // likePost(postId: number) { httpPost..({url: `{postId}/like`})}
     // unlikePost(postId: number) { httpDelete..({url: `{postId}/like`})}

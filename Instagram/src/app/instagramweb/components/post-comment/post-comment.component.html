@@ -1,7 +1,16 @@
 
 id:{{postData.postId}}<br/>
 text:{{postData.postText}}<br/>
-<button class="btn btn-primary" type="submit" (click)="likeClick(postData.postId)">Like</button>
+<ng-container *ngIf="likedByMe()">
+	    <button class="btn btn-sm btn-info" type="submit" (click)="unlikeClick(postData.postId)">Unlike</button>
+	</ng-container>
+	
+	<ng-container *ngIf="!likedByMe()">
+	    <button class="btn btn-sm btn-primary" type="submit" (click)="likeClick(postData.postId)">Like</button>
+	</ng-container>
+	
+	Likes: {{likeCount()}}
+
 <form #form="ngForm">
     <div class="form-group">
         <label for="comment">Post your comment:</label>

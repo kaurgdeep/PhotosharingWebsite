@@ -11,6 +11,9 @@ import { CommentService } from '../../services/CommentService';
 })
 export class PostCommentComponent implements OnInit {
   @Input() postData: IPost;
+  @Input() userId: number;
+
+	liked: boolean;
   vm: IComment = { };
   apiCall: boolean;
 
@@ -32,11 +35,37 @@ export class PostCommentComponent implements OnInit {
     this.apiCall = false;
   }
 
-  async likeClick(postId: number) {
+  // async likeClick(postId: number) {
+  //   this.apiCall = true;
+  //   await this.postService.createPostLike(postId);
+    
+  // }
+
+  likedByMe() {
+    if (!this.postData || !this.postData.postLikes || this.postData.postLikes.length == 0) {
+        return this.liked;
+    } 
+    return this.postData.postLikes.filter(x => x.userId == this.userId).length != 0 || this.liked;
+}
+
+likeCount() {
+    return ((this.postData && this.postData.postLikes) ? this.postData.postLikes.length : 0);
+}
+
+async likeClick(postId: number) {
     this.apiCall = true;
     await this.postService.createPostLike(postId);
-    
-  }
+    this.apiCall = false;
+    this.liked = true;
+}
+
+async unlikeClick(postId: number) {
+    this.apiCall = true;
+    await this.postService.deletePostLike(postId);
+    this.apiCall = false;
+    this.liked = false;
+}
+
 
 
 }

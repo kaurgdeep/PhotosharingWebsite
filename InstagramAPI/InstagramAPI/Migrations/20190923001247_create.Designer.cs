@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InstagramAPI.Migrations
 {
     [DbContext(typeof(InstagramContext))]
-    [Migration("20190922000647_create")]
+    [Migration("20190923001247_create")]
     partial class create
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,6 +73,8 @@ namespace InstagramAPI.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedAt");
+
+                    b.Property<string>("ImagePath");
 
                     b.Property<string>("PostText")
                         .IsRequired();

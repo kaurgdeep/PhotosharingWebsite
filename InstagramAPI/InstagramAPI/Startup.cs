@@ -9,6 +9,7 @@ using InstagramAPI.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -53,6 +54,7 @@ namespace InstagramAPI
                 options.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
                 options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
             });
+            services.Configure<FormOptions>(x => { x.ValueLengthLimit = int.MaxValue; x.MultipartBodyLengthLimit = int.MaxValue; x.MemoryBufferThreshold = int.MaxValue; });
             // var connection = @"Server=(localdb)\mssqllocaldb;Database=InstagramDB;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddScoped<IEntityService<User>, UserService>();
             services.AddScoped<IEntityService<Post>, PostService>();
@@ -82,6 +84,7 @@ namespace InstagramAPI
             app.UseCors(Constants.InstagramServerCorsPolicy);
 
             app.UseMvc();
+            app.UseStaticFiles();
         }
     }
 }

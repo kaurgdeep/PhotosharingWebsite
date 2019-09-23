@@ -72,6 +72,8 @@ namespace InstagramAPI.Migrations
 
                     b.Property<DateTime>("CreatedAt");
 
+                    b.Property<string>("ImagePath");
+
                     b.Property<string>("PostText")
                         .IsRequired();
 

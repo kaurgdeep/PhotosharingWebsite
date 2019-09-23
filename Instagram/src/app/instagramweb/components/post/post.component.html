@@ -19,6 +19,16 @@
             (click)="postClick()">
             
         <ng-container *ngIf="busy"><i class="fa fa-spinner fa-spin"></i>&nbsp;Registering...</ng-container>
-        <ng-container *ngIf="!busy">Register</ng-container>
+        <ng-container *ngIf="!busy">Post</ng-container>
     </button>
 </form>
+
+<input #file type="file"  (change)="upload(file.files)" />
+<br />
+<span style="font-weight:bold;color:green;" *ngIf="progress > 0 && progress < 100">
+  {{progress}}%
+</span>
+
+<span style="font-weight:bold;color:green;" *ngIf="message">
+  {{message}}
+</span>
