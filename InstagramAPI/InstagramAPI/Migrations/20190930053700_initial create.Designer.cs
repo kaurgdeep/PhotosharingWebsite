@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InstagramAPI.Migrations
 {
     [DbContext(typeof(InstagramContext))]
-    [Migration("20190923001247_create")]
-    partial class create
+    [Migration("20190930053700_initial create")]
+    partial class initialcreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -137,6 +137,23 @@ namespace InstagramAPI.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("InstagramAPI.Models.UserFriend", b =>
+                {
+                    b.Property<int>("UserFriendId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("FriendId");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("UserFriendId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserFriends");
+                });
+
             modelBuilder.Entity("InstagramAPI.Models.Comment", b =>
                 {
                     b.HasOne("InstagramAPI.Models.Post", "Post")
@@ -180,6 +197,14 @@ namespace InstagramAPI.Migrations
 
                     b.HasOne("InstagramAPI.Models.User", "User")
                         .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("InstagramAPI.Models.UserFriend", b =>
+                {
+                    b.HasOne("InstagramAPI.Models.User", "User")
+                        .WithMany("UserFriends")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });

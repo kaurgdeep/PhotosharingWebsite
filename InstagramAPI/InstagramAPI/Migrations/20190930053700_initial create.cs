@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace InstagramAPI.Migrations
 {
-    public partial class create : Migration
+    public partial class initialcreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -43,6 +43,26 @@ namespace InstagramAPI.Migrations
                     table.PrimaryKey("PK_Posts", x => x.PostId);
                     table.ForeignKey(
                         name: "FK_Posts_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserFriends",
+                columns: table => new
+                {
+                    UserFriendId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    FriendId = table.Column<int>(nullable: false),
+                    UserId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserFriends", x => x.UserFriendId);
+                    table.ForeignKey(
+                        name: "FK_UserFriends_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
@@ -167,6 +187,11 @@ namespace InstagramAPI.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_UserFriends_UserId",
+                table: "UserFriends",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Users_EmailAddress",
                 table: "Users",
                 column: "EmailAddress",
@@ -180,6 +205,9 @@ namespace InstagramAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "PostLikes");
+
+            migrationBuilder.DropTable(
+                name: "UserFriends");
 
             migrationBuilder.DropTable(
                 name: "Comments");
