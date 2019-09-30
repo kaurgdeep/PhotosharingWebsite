@@ -26,9 +26,11 @@ namespace InstagramAPI.Models
 
         public List<Post> Posts { get; set; }
         public List<Comment> Comments { get; set; }
+        public List<UserFriend> UserFriends { get; set; }
 
         public User()
         {
+            UserFriends = new List<UserFriend>();
             Posts = new List<Post>();
             Comments = new List<Comment>();
         }

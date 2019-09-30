@@ -1,4 +1,5 @@
 <div class="container">
+    <h1 *ngIf="me" style="text-align: center; color: #007bff">{{me.firstName}} {{me.lastName}}</h1>
     <app-post postDone="postDone()"></app-post>
     <app-posts-list></app-posts-list>
 </div>

@@ -17,5 +17,7 @@ namespace InstagramAPI
         // Claims
         public static string EmailAddress = "EmailAddress";
         public static string UserId = "UserId";
+        public static string FirstName = "FirstName";
+        public static string LastName = "LastName";
     }
 }

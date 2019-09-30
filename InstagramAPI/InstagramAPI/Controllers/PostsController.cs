@@ -51,6 +51,7 @@ namespace InstagramAPI.Controllers
                 UserId = LoggedInUserId.Value,
                 PostId = postDto.PostId,
                 PostText = postDto.PostText,
+                ImagePath = postDto.ImagePath,
                 CreatedAt = DateTime.UtcNow,
 
 

@@ -13,7 +13,7 @@ export class RegisterViewComponent implements OnInit {
 
   apiCall: boolean;
   errorStatus: string;
-  FB: any;
+ 
 
   constructor(private activatedRoute: ActivatedRoute, public router: Router, private userService: UserService ) { }
 
@@ -28,7 +28,7 @@ export class RegisterViewComponent implements OnInit {
       //this.status = 'Login succeeded! Redirecting to home page';
       setTimeout(() => {
         console.log('Redirecting to home', JSON.stringify(localStorage));
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/timeline']);
       }, 100);
     } else {
       this.apiCall = false;

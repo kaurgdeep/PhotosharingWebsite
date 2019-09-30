@@ -33,7 +33,7 @@ namespace InstagramAPI.Controllers
                 var file = Request.Form.Files[0];
                 
                 string fileName = Guid.NewGuid().ToString();
-                string folderName = "Upload/{LoggedInUserId}";
+                string folderName = $"Upload/{LoggedInUserId}";
                 string webRootPath = _hostingEnvironment.WebRootPath;
                 string newPath = Path.Combine(webRootPath, folderName);
                 if (!Directory.Exists(newPath))
@@ -52,7 +52,7 @@ namespace InstagramAPI.Controllers
                         file.CopyTo(stream);
                     }
                 }
-                return Ok(fileName);
+                return new JsonResult(fileName);
             }
             catch (System.Exception ex)
             {

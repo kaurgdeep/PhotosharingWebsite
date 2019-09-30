@@ -30,7 +30,7 @@ export class LoginViewComponent implements OnInit {
       this.status = 'Login succeeded! Redirecting to home page';
       setTimeout(() => {
         console.log('Redirecting to home', JSON.stringify(localStorage));
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/timeline']);
       }, 100);
     } else {
       this.apiCall = false;

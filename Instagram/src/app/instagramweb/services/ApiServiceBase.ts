@@ -21,11 +21,11 @@ export abstract class ApiServiceBase {
     }
 
     protected async httpGet<TResponse>({
-        url = '' }: { url?: string } = {}): Promise<TResponse> {
+        url = '' }: { url?: string } = {}, fromApi?: Function): Promise<TResponse> {
         const request = new Promise<TResponse>((resolve, reject) => {
             this.httpClient.get<TResponse>(`${this.baseUrl}/${url}`)
                 // .retry(retries)
-                .subscribe((data) => resolve(data), (reason) => reject(reason));
+                .subscribe((data) => resolve(fromApi ? fromApi(data) : data), (reason) => reject(reason));
         });
 
         return await this.executePromise<TResponse>(request);

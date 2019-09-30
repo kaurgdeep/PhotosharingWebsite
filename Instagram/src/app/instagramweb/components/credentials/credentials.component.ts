@@ -11,6 +11,8 @@ import { ILoginUser } from '../../Dtos/Interfaces/ILoginUser';
 export class CredentialsComponent implements OnInit {
 
   @Input() emailAddress: string;
+  @Input() firstName: string;
+  @Input() lastName: string;
   @Input() isRegister: boolean;
   @Input() busy: boolean;
 
@@ -30,10 +32,14 @@ export class CredentialsComponent implements OnInit {
 
   ngOnInit() {
       this.vm.emailAddress = this.emailAddress;
+      this.vm.firstName = this.firstName;
+      this.vm.lastName = this.lastName;
   }
 
   register() {
       this.registerClick.emit({ 
+      firstName: this.vm.firstName,
+      lastName: this.vm.lastName,
       emailAddress: this.vm.emailAddress, 
       password: this.vm.password,
     });
@@ -41,6 +47,8 @@ export class CredentialsComponent implements OnInit {
 
   login() {
       this.loginClick.emit({ 
+      firstName: this.vm.firstName,
+      lastName: this.vm.lastName,
       emailAddress: this.vm.emailAddress, 
       password: this.vm.password,
     });

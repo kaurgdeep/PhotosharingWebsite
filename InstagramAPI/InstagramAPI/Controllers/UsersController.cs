@@ -9,6 +9,7 @@ using InstagramAPI.Dtos;
 using InstagramAPI.Interfaces.Services;
 using InstagramAPI.Models;
 using InstagramAPI.Responses;
+using InstagramAPI.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -25,13 +26,16 @@ namespace InstagramAPI.Controllers
 
         private IConfiguration Configuration;
         private IEntityService<User> UserService;
+        private IEntityService<UserFriend> UserFriendService;
 
-        
 
-        public UsersController(IConfiguration configuration, IEntityService<User> userService)
+
+        public UsersController(IConfiguration configuration, IEntityService<User> userService, IEntityService<UserFriend> userFriendService)
         {
             Configuration = configuration;
             UserService = userService;
+            UserFriendService = userFriendService;
+
         }
 
         // POST api/values
@@ -51,7 +55,8 @@ namespace InstagramAPI.Controllers
                 {
                     EmailAddress = userDto.EmailAddress.ToLower(),
                     PasswordHash = userDto.Password,
-                    
+                    FirstName = userDto.FirstName,
+                    LastName = userDto.LastName,
                     Created = DateTime.UtcNow
                 };
                 var userId = UserService.Create(user);
@@ -105,6 +110,9 @@ namespace InstagramAPI.Controllers
             var claims = new[] {
                 new Claim(Constants.EmailAddress, user.EmailAddress),
                 new Claim(Constants.UserId, user.UserId.ToString()),
+                new Claim(Constants.FirstName, user.FirstName),
+                new Claim(Constants.LastName, user.LastName),
+
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration[Constants.JWTSecurityKey]));
@@ -128,8 +136,34 @@ namespace InstagramAPI.Controllers
             {
                 UserId = LoggedInUserId,
                 EmailAddress = LoggedInEmailAddress,
-                
+                FirstName = LoggedInFirstName,
+               LastName = LoggedInLastName,
+
             });
+        }
+
+        [HttpPost]
+        [Route("friend/{friendId}")]
+        public ActionResult CreateAddFriend(int friendId)
+        {
+            if (LoggedInUserId == null)
+            {
+                return BadRequest("Invalid user id");
+            }
+
+            var userFriend = new UserFriend
+            {
+                UserId = LoggedInUserId.Value,
+
+                FriendId = friendId
+
+
+            };
+             UserFriendService.Create(userFriend);
+            
+
+            return Ok();
+
         }
 
     }

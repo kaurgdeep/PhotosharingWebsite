@@ -58,6 +58,48 @@ namespace InstagramAPI.Controllers
             }
         }
 
+        private string firstName;
+        protected string LoggedInFirstName
+        {
+            get
+            {
+                if (firstName != null)
+                {
+                    return firstName;
+                }
+
+                var firstNameFromClaims = GetClaim(Constants.FirstName);
+                if (firstNameFromClaims == null)
+                {
+                    return null;
+                }
+                firstName = firstNameFromClaims;
+
+                return firstName;
+            }
+        }
+
+        private string lastName;
+        protected string LoggedInLastName
+        {
+            get
+            {
+                if (lastName != null)
+                {
+                    return lastName;
+                }
+
+                var lastNameFromClaims = GetClaim(Constants.LastName);
+                if (lastNameFromClaims == null)
+                {
+                    return null;
+                }
+                lastName = lastNameFromClaims;
+
+                return lastName;
+            }
+        }
+
         private string GetClaim(string claimType)
         {
             return User?.Claims?.Where(c => c.Type == claimType)?.FirstOrDefault()?.Value;

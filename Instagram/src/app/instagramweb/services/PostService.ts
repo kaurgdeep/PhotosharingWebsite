@@ -4,6 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { ICreateResponse } from '../Dtos/Interfaces/ICreateResponse';
 import { IPost } from '../Dtos/Interfaces/IPost';
 import { IComment } from "../Dtos/Interfaces/IComment";
+import { Post } from "../Dtos/Entities/Post";
 
 
 
@@ -19,7 +20,7 @@ export class PostService extends ApiServiceBase {
 
     async getMany(skip : number, take: number ) : Promise<IPost[]>{
         var qs = `?skip=${skip}&take=${take}`;
-        return await super.httpGet<IPost[]>({url:qs});
+        return await super.httpGet<IPost[]>({url:qs}, Post.fromApiArray);
 
     }
 
@@ -36,6 +37,14 @@ export class PostService extends ApiServiceBase {
 
     async deletePostLike(postId: number): Promise<{}> {
         return await super.httpDelete<{}>({ url: `${postId}/like` });
+    }
+
+    async createCommentLike(commentId: number): Promise<ICreateResponse> {
+        return await super.httpPost<number, ICreateResponse>({ url: `${commentId}/like` });
+    }
+
+    async deleteCommentLike(commentId: number): Promise<{}> {
+        return await super.httpDelete<{}>({ url: `${commentId}/like` });
     }
 
 

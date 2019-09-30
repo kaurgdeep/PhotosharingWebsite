@@ -21,7 +21,6 @@ export class PostsListComponent implements OnInit {
     this.skip += this.take;
 
     this.posts = this.posts.concat(await this.postService.getMany(this.skip, this.take));
-
   }
 
   async ngOnInit() {
@@ -32,6 +31,7 @@ export class PostsListComponent implements OnInit {
     }
     this.userId = me.userId;
     this.posts = await this.postService.getMany(this.skip, this.take);
+    
 }
 
 

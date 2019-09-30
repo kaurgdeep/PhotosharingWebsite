@@ -2,6 +2,9 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { PostService } from '../../services/PostService';
 import { IPost } from '../../Dtos/Interfaces/IPost';
 import { HttpClient, HttpRequest, HttpEventType, HttpResponse } from '@angular/common/http';
+import { IUserInformation } from '../../Dtos/Interfaces/IUserInformation';
+import { UserService } from '../../services/UserService';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -13,10 +16,16 @@ export class PostComponent implements OnInit {
   apiCall: boolean;
   public progress: number;
   public message: string;
+  me: IUserInformation;
 
-  constructor(private postService: PostService, private http: HttpClient) { }
+  constructor(private userService: UserService, private postService: PostService,public router: Router, private http: HttpClient) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.me = await this.userService.getMe();
+    console.log(this.me);
+    if (this.me == null) {
+        this.router.navigate(['/login']);
+    }
   }
 
   @Output() postDone = new EventEmitter();
@@ -24,6 +33,7 @@ export class PostComponent implements OnInit {
 
   async postClick() {
     this.apiCall = true;
+    console.log(this.vm);
     await this.postService.create(this.vm); // POST api/posts
     //this.postDone.emit(this.vm);
 
@@ -42,7 +52,7 @@ export class PostComponent implements OnInit {
     for (let file of files)
       formData.append(file.name, file);
 
-    const uploadReq = new HttpRequest('POST', `api/upload`, formData, {
+    const uploadReq = new HttpRequest('POST', `/api/upload`, formData, {
       reportProgress: true,
     });
 
@@ -51,6 +61,8 @@ export class PostComponent implements OnInit {
         this.progress = Math.round(100 * event.loaded / event.total);
       else if (event.type === HttpEventType.Response)
         this.message = event.body.toString();
+        console.log(this.message);
+        this.vm.imagePath = this.message;
     });
 
   }

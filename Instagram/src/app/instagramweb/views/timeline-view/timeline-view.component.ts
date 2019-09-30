@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../../services/PostService';
+import { Router } from '@angular/router';
+import { UserService } from '../../services/UserService';
+import { IUserInformation } from '../../Dtos/Interfaces/IUserInformation';
 
 
 @Component({
@@ -9,9 +12,16 @@ import { PostService } from '../../services/PostService';
 })
 export class TimelineViewComponent implements OnInit {
 
-  constructor() { }
+  me: IUserInformation;
 
-  ngOnInit() {
+  constructor(private userService: UserService,public router: Router) { }
+
+  async ngOnInit() {
+    this.me = await this.userService.getMe();
+    console.log(this.me);
+    if (this.me == null) {
+        this.router.navigate(['/login']);
+    }
   }
 
   postDone(post) {

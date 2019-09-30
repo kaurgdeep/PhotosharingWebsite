@@ -1,34 +1,35 @@
+<div class="Info">
+    <ng-container *ngIf="me">
+        <h3 style="color: #007bff">{{me.firstName}} {{me.lastName}}</h3> 
+    </ng-container>
 
-id:{{postData.postId}}<br/>
-text:{{postData.postText}}<br/>
-<ng-container *ngIf="likedByMe()">
-	    <button class="btn btn-sm btn-info" type="submit" (click)="unlikeClick(postData.postId)">Unlike</button>
-	</ng-container>
-	
-	<ng-container *ngIf="!likedByMe()">
-	    <button class="btn btn-sm btn-primary" type="submit" (click)="likeClick(postData.postId)">Like</button>
-	</ng-container>
-	
-	Likes: {{likeCount()}}
+    <!-- id:{{postData.user.firstName}}<br />  -->
+    <h4>Caption:{{postData.postText}}</h4>
+    <h6>Posted:{{momentTime(postData.createdAt)}}</h6>
+    <img *ngIf="postData.imagePath" src="{{apiUrl}}/upload/{{userId}}/{{postData.imagePath}}" alt="">
 
-<form #form="ngForm">
-    <div class="form-group">
-        <label for="comment">Post your comment:</label>
-        <input required
-               type="text"
-               class="form-control"
-               maxlength="1024"
-               name="comment"
-               #post="ngModel"
-               placeholder="Comment here..."
-               [disabled]="busy"
-               [(ngModel)]="vm.commentText">
-    </div>
-    
-    <button type="submit"
-            class="btn btn-primary"
-            [disabled]="form.invalid || busy"
-            (click)="commentClick()">Comment
-    </button>
-</form>
+    <br/>
+</div>
+    <br />
+    <br />
+    <ng-container *ngIf="likedByMe()">
+        <button class="btn btn-sm btn-info" type="submit" (click)="unlikeClick(postData.postId)">Unlike</button>
+    </ng-container>
 
+    <ng-container *ngIf="!likedByMe()">
+        <button class="btn btn-sm btn-primary" type="submit" (click)="likeClick(postData.postId)">Like</button>
+    </ng-container>
+
+    {{likeCount()}}
+
+    <form #form="ngForm">
+        <div class="form-group">
+            <label for="comment">Post your comment:</label>
+            <input required type="text" class="form-control" maxlength="1024" name="comment" #post="ngModel"
+                placeholder="Comment here..." [disabled]="busy" [(ngModel)]="vm.commentText">
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid || busy" (click)="commentClick()">Comment</button>
+        <br/>
+        <br/>
+    </form>

@@ -52,11 +52,14 @@ namespace InstagramAPI
             .AddJsonOptions(options =>
             {
                 options.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
+                options.SerializerSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc; // Adding this because in 
+                //Created = DateTime.UtcNow it's missing 'z' in string getting back from asp.net so to avoid that this has to be added.
                 options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
             });
             services.Configure<FormOptions>(x => { x.ValueLengthLimit = int.MaxValue; x.MultipartBodyLengthLimit = int.MaxValue; x.MemoryBufferThreshold = int.MaxValue; });
             // var connection = @"Server=(localdb)\mssqllocaldb;Database=InstagramDB;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddScoped<IEntityService<User>, UserService>();
+            services.AddScoped<IEntityService<UserFriend>, UserFriendService>();
             services.AddScoped<IEntityService<Post>, PostService>();
             services.AddScoped<IEntityService<Comment>, CommentService>();
             services.AddScoped<IEntityService<CommentLike>, CommentLikeService>();
