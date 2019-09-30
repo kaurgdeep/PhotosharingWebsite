@@ -11,12 +11,10 @@ namespace InstagramAPI.Dtos
     {
         public int UserFriendId { get; set; }
         public int FriendId { get; set; }
-        [ForeignKey("FriendId")]
         public virtual User Friend { get; set; }
 
 
-        public User UserId { get; set; }
-        [ForeignKey("UserId")]
+        public int UserId { get; set; }
         public virtual User User { get; set; }
     }
 }
