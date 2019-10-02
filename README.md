@@ -1,16 +1,10 @@
 # Instagramapp
 It is a photo and blog sharing website allow users to upload, store, edit, organize, and share photos. This site connects users with others through comments, tags, and likes. User can also post a message or a blog which also other users can comment and like.
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/37717564/64203536-7f497b00-ce48-11e9-9b15-eadd69e84061.png">
-</p>
 
-
-# Kuber 
-Kuber is a ridesharing web application connect drivers and passengers. Passenger can request a ride and nearby driver accepts your request, Kuber displays the driver heading to passenger's pickup location and droppedoff to the passenger's destination. 
 
 **Key Features** 
 ------------------
-#### • Register • LogIn • Request Ride • Cancel Ride • Accept Ride • Pickup Ride • Drop Off Ride  • AutoComplete destination • Map Directions
+#### • Register • LogIn • Create Post • Upload Image • Add Caption • Add-Friend • Un-Friend  • Like or Unlike the post • Add a comment on a post • Like or Unlike the comment
 ----------------
 ## ScreenShots
 
