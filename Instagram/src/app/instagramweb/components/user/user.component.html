@@ -1,0 +1,19 @@
+<div *ngFor="let user of users" class="container user-container">
+  
+    <h4>User: {{user.firstName}} {{user.lastName}}</h4>
+    <ng-container>
+        <button class="btn btn-sm btn-info" type="submit"
+                (click)="friendClick(user.userId)">AddFriend</button>
+    </ng-container>
+
+    <!-- <ng-container>
+            <button class="btn btn-sm btn-info" type="submit" (click)="unlFriendClick(user.userId)">Un-Friend</button>
+    </ng-container> -->
+
+</div>
+
+
+<div class="container more-container">
+    <button class="btn btn-info" (click)="getMore()">More</button>
+</div>
+

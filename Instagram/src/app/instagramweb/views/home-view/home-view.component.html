@@ -1,3 +1,15 @@
-<i class="fa fa-spinner fa-spin"></i>&nbsp;
-<em>Redirecting to appropriate page...</em>
-<h1>Welcome</h1>
+<!-- <i class="fa fa-spinner fa-spin"></i>&nbsp;
+<em>Redirecting to appropriate page...</em> -->
+
+<div class="container">
+    <h1 *ngIf="me" style="text-align: center; color: #007bff">{{me.firstName}} {{me.lastName}}</h1>
+
+    <ng-container>
+        <a href="logout" style="float: right;margin-left: 15px;">Logout</a>
+
+        <a href="timeline" style="float: right;">Go to Your Timeline</a>
+    </ng-container>
+    <app-user></app-user>
+   
+</div>
+

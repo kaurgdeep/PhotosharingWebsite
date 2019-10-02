@@ -14,6 +14,8 @@ import { TimelineViewComponent } from './instagramweb/views/timeline-view/timeli
 
 const routes: Routes = [
   { path: '', component: RegisterViewComponent },
+  { path: 'logout', component: RegisterViewComponent},
+
   { path: 'home', component: HomeViewComponent, canActivate: [AuthenticationGuardService] },
 
   { path: 'login', component: LoginViewComponent },

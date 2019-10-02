@@ -1,5 +1,6 @@
 ﻿using InstagramAPI.Interfaces.Services;
 using InstagramAPI.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,12 +31,26 @@ namespace InstagramAPI.Services
 
         public int Count(Func<User, bool> filter)
         {
-            throw new NotImplementedException();
+            return Context.Users.Count(filter);
         }
 
         public IEnumerable<User> GetMany(Func<User, bool> filter, int skip = 0, int take = 25)
         {
-            throw new NotImplementedException();
+            //var users = Context.Users
+            //    //.Include(post => post.User)
+            //    .OrderByDescending(user => user.Created)
+            //    //.Include(_ => _.Comments)
+            //    //    .ThenInclude(thisComment => thisComment.User)
+            //    //.Include(_ => _.UserFriends)
+            //    .Where(filter)
+            //    .Skip(skip)
+            //    .Take(take)
+            //    .ToList()
+            //    ;
+            //return users;
+
+            return Context.Users.Where(filter).Skip(skip).Take(take);
+
         }
 
         public User Update(Action updateFn, User user)

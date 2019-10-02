@@ -47,6 +47,21 @@ export class UserService extends ApiServiceBase {
         return super.httpGet({ url: 'me' });
     }
 
+    async getMany(skip : number, take: number ) : Promise<IUserInformation[]>{
+        var qs = `?skip=${skip}&take=${take}`;
+        return await super.httpGet<IUserInformation[]>({url:qs});
+
+    }
+
+    async createAddFriend(friendId: number): Promise<{}> {
+        return await super.httpPost<number, {}>({ url: `friend/${friendId}` });
+    }
+
+    async deleteAddFriend(friendId: number): Promise<{}> {
+        return await super.httpDelete<{}>({ url: `friend/${friendId}` });
+    }
+
+
     logout(): void {
         this.authenticationStore.resetAuthentication();
     }

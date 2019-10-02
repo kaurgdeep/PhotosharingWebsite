@@ -142,6 +142,30 @@ namespace InstagramAPI.Controllers
             });
         }
 
+        [HttpGet]
+        [Route("")]
+        public ActionResult GetUser([FromQuery]int skip=0, [FromQuery]int take=25)
+        {
+            if (LoggedInUserId == null)
+            {
+                return BadRequest("Invalid user id");
+            }
+
+
+            var usersList = UserService.GetMany(x => x.UserId != LoggedInUserId, skip, take);
+
+            return Ok(usersList);
+
+        }
+
+        [HttpGet]
+        [Route("count")]
+        public ActionResult CountUsers()
+        {
+            return Ok(UserService.Count(x => x.UserId != LoggedInUserId));
+        }
+
+
         [HttpPost]
         [Route("friend/{friendId}")]
         public ActionResult CreateAddFriend(int friendId)
@@ -161,6 +185,16 @@ namespace InstagramAPI.Controllers
             };
              UserFriendService.Create(userFriend);
             
+
+            return Ok();
+
+        }
+
+        [HttpDelete]
+        [Route("friend/{friendId}")]
+        public ActionResult Delete(int friendId)
+        {
+            UserFriendService.Delete(x => x.FriendId == friendId && x.UserId == LoggedInUserId);
 
             return Ok();
 

@@ -1,5 +1,11 @@
 <div class="container">
     <h1 *ngIf="me" style="text-align: center; color: #007bff">{{me.firstName}} {{me.lastName}}</h1>
+    <ng-container>
+        <a href="logout" style="float: right;margin-left: 15px;">Logout</a>
+        <a href="home" style="float: right;">Home</a>
+
+
+    </ng-container>
     <app-post postDone="postDone()"></app-post>
     <app-posts-list></app-posts-list>
 </div>

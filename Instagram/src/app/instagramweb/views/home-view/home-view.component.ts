@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { IUserInformation } from '../../Dtos/Interfaces/IUserInformation';
+import { UserService } from '../../services/UserService';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-view',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeViewComponent implements OnInit {
 
-  constructor() { }
+  me: IUserInformation;
 
-  ngOnInit() {
+  constructor(private userService: UserService,public router: Router) { }
+
+  async ngOnInit() {
+    this.me = await this.userService.getMe();
+    console.log(this.me);
+    if (this.me == null) {
+        this.router.navigate(['/login']);
+    }
   }
-
+  
 }

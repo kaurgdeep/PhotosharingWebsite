@@ -22,6 +22,7 @@ import { PostService } from './instagramweb/services/PostService';
 import { PostCommentComponent } from './instagramweb/components/post-comment/post-comment.component';
 import { CommentService } from './instagramweb/services/CommentService';
 import { CommentListComponent } from './instagramweb/components/comment-list/comment-list.component';
+import { UserComponent } from './instagramweb/components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { CommentListComponent } from './instagramweb/components/comment-list/com
     PostsListComponent,
     PostCommentComponent,
     CommentListComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,

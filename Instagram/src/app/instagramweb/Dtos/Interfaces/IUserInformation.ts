@@ -4,4 +4,5 @@ export interface IUserInformation {
     emailAddress?: string;
     firstName?: string;
     lastName?: string;
+    
 }
