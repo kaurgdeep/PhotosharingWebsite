@@ -33,7 +33,7 @@ Screenshots  | Description
 
 
 **Clone this repository**
-$ git clone https://github.com/kaurgdeep/Instagramapp.git
+$ git clone https://github.com/kaurgdeep/PhotosharingApp.git
 
 **Go into the repository**
 
