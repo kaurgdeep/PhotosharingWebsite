@@ -4,7 +4,8 @@ It is a photo and blog sharing website allow users to upload, store, edit, organ
 
 **Key Features** 
 ------------------
-#### • Register • LogIn • Create Post • Upload Image • Add Caption • Add-Friend • Un-Friend  • Like or Unlike the post • Add a comment on a post • Like or Unlike the comment
+#### • Register • LogIn • Create Post • Upload Image • Add Caption • Add-Friend • Un-Friend  • Like or Unlike the post 
+#### • Add a comment on a post • Like or Unlike the comment
 ----------------
 ## ScreenShots
 
