@@ -1,0 +1,7 @@
+<div *ngFor="let user of users" class="container user-container">
+        <app-user [userData]="user" [userId]="userId"></app-user>
+</div>
+
+<div class="container more-container">
+        <button class="btn btn-info" (click)="getMore()">More</button>
+</div>

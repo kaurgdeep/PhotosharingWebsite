@@ -39,13 +39,7 @@ export class PostService extends ApiServiceBase {
         return await super.httpDelete<{}>({ url: `${postId}/like` });
     }
 
-    async createCommentLike(commentId: number): Promise<ICreateResponse> {
-        return await super.httpPost<number, ICreateResponse>({ url: `${commentId}/like` });
-    }
-
-    async deleteCommentLike(commentId: number): Promise<{}> {
-        return await super.httpDelete<{}>({ url: `${commentId}/like` });
-    }
+    
 
 
     

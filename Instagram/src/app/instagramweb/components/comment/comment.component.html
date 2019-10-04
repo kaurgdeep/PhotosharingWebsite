@@ -1,0 +1,17 @@
+<div style="background: #ffffff; padding: 5px; border-radius: 5px;">
+
+    <h6>Comment: {{commentData.commentText}}</h6>
+    <ng-container *ngIf="likedByMe()">
+            <button class="btn btn-sm btn-info" type="submit"
+                    (click)="unlikeClick(commentData.commentId)">Unlike</button>
+    </ng-container>
+
+    <ng-container *ngIf="!likedByMe()">
+            <button class="btn btn-sm btn-primary" type="submit"
+                    (click)="likeClick(commentData.commentId)">Like</button>
+    </ng-container>
+
+    {{likeCount()}}
+   
+</div>
+

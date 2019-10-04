@@ -187,9 +187,10 @@ namespace InstagramAPI.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserFriends_UserId",
+                name: "IX_UserFriends_UserId_FriendId",
                 table: "UserFriends",
-                column: "UserId");
+                columns: new[] { "UserId", "FriendId" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_EmailAddress",

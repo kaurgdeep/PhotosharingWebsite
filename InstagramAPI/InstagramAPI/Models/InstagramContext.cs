@@ -46,6 +46,10 @@ namespace InstagramAPI.Models
                 .HasIndex(u => new { u.PostId, u.UserId })
                 .IsUnique();
 
+            modelBuilder.Entity<UserFriend>()
+               .HasIndex(u => new { u.UserId, u.FriendId })
+               .IsUnique();
+
         }
     }
 }

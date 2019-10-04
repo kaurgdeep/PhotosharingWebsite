@@ -10,7 +10,7 @@ import { PostService } from '../../services/PostService';
 })
 export class CommentListComponent implements OnInit {
   @Input() postId : number;
-  @Input() commentData: IComment;
+ //@Input() commentData: IComment;
   @Input() userId: number;
   apiCall: boolean;
   liked: boolean;
@@ -31,30 +31,6 @@ export class CommentListComponent implements OnInit {
 
   }
 
-  likedByMe() {
-    console.log(this.commentData);
-    if (!this.commentData || !this.commentData.commentLikes || this.commentData.commentLikes.length == 0) {
-        return this.liked;
-    } 
-    return this.commentData.commentLikes.filter(x => x.userId == this.userId).length != 0 || this.liked;
-  }
-
-  likeCount() {
-      return ((this.commentData && this.commentData.commentLikes) ? this.commentData.commentLikes.length : 0);
-  }
-
-  async likeClick(commentId: number) {
-      this.apiCall = true;
-      await this.postService.createCommentLike(commentId);
-      this.apiCall = false;
-      this.liked = true;
-  }
-
-  async unlikeClick(commentId: number) {
-      this.apiCall = true;
-      await this.postService.deleteCommentLike(commentId);
-      this.apiCall = false;
-      this.liked = false;
-  }
+  
 
 }

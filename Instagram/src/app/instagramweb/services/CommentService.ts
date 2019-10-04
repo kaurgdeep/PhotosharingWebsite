@@ -22,7 +22,12 @@ export class CommentService extends ApiServiceBase {
 
     }
 
-    // likePost(postId: number) { httpPost..({url: `{postId}/like`})}
-    // unlikePost(postId: number) { httpDelete..({url: `{postId}/like`})}
+    async createCommentLike(commentId: number): Promise<ICreateResponse> {
+        return await super.httpPost<number, ICreateResponse>({ url: `${commentId}/like` });
+    }
+
+    async deleteCommentLike(commentId: number): Promise<{}> {
+        return await super.httpDelete<{}>({ url: `${commentId}/like` });
+    }
 
 }

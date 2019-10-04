@@ -147,7 +147,8 @@ namespace InstagramAPI.Migrations
 
                     b.HasKey("UserFriendId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId", "FriendId")
+                        .IsUnique();
 
                     b.ToTable("UserFriends");
                 });

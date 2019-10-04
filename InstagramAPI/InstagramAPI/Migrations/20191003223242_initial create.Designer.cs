@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InstagramAPI.Migrations
 {
     [DbContext(typeof(InstagramContext))]
-    [Migration("20190930054543_initial create")]
+    [Migration("20191003223242_initial create")]
     partial class initialcreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -149,7 +149,8 @@ namespace InstagramAPI.Migrations
 
                     b.HasKey("UserFriendId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId", "FriendId")
+                        .IsUnique();
 
                     b.ToTable("UserFriends");
                 });
