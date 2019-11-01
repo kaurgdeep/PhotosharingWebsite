@@ -11,7 +11,7 @@ It is a photo and blog sharing website allow users to upload, store, edit, organ
 
 Screenshots  | Description
 ------------ | -------------
-![image](https://user-images.githubusercontent.com/37717564/68008294-ac918a00-fc3b-11e9-8f94-949c3c2297d1.png) | Components Layout
+![image](https://user-images.githubusercontent.com/37717564/68008428-24f84b00-fc3c-11e9-865a-d831860fbc74.png) | Components Layout
 
 ![image](https://user-images.githubusercontent.com/37717564/66187096-d786bf00-e638-11e9-8526-d498fa5e7536.png) |  Create an account                                                                                                                       user with First Name,                                                                                                                   Last Name, email                                                                                                                         address and                                                                                                                             password.  
 ![image](https://user-images.githubusercontent.com/37717564/66028860-d592f380-e4b2-11e9-8216-74329fe80303.png)  | After login, user will land on timeline-view, where user can post a new status which includes photo and text caption. New post will show on the same timeline.                                                                                                                       
